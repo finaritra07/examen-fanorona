@@ -1,0 +1,37 @@
+<div class="game-wrapper">
+
+    <div class="game">
+
+        @if(!winner){
+            <h2>Tour du joueur : {{currentPlayer}}</h2>
+        }
+        @else{
+            <h2>Joueur {{winner}} a gagné !</h2>
+        }
+
+        <div class="board">
+
+            @for(row of board; track $index; let r = $index){
+
+                <div class="row">
+
+                    @for(col of row; track $index; let c = $index){
+
+                        <div class="point" (click)="select(r,c)">
+                        <div
+                        class="piece"
+                        [class.a]="board[r][c]=='A'"
+                        [class.b]="board[r][c]=='B'"
+                        ></div>
+                        </div>
+                    }
+                </div>
+            }
+
+        </div>
+
+        <button (click)="resetGame()">Recommencer</button>
+
+    </div>
+
+</div>
